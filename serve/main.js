@@ -15,10 +15,6 @@ var server=app.listen(app.get('port'),()=>{
 
 
 
-
-
-
-
 var websocket = require('socket.io');
 var io=websocket.listen(server)
 
@@ -35,6 +31,14 @@ io.on('connection',(socket)=>{
         //io.sockets.emit('mensajeServidor',data)
         socket.broadcast.emit('mensajeServidor',data)
     })
+
+
+    
+    socket.on('pedido',(data)=>{
+        console.log("mensaje",data);
+        socket.broadcast.emit('lavanderia'+data,data)
+    })
+
 
 })
 
