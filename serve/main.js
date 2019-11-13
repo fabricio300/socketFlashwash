@@ -1,22 +1,7 @@
-var express = require('express');
-var app = express();
+const app = require('express')();
+const http = require('http').Server(app);
+const io = require('socket.io')(http);
 
-
-
-app.set('port',process.env.PORT||3000);
-
-
-//iniciar server
-var server=app.listen(app.get('port'),()=>{
-
-    console.log("puerto ", app.get('port'))
-
-})
-
-
-
-var websocket = require('socket.io');
-var io=websocket.listen(server)
 
 
 //sockets
@@ -42,7 +27,7 @@ io.on('connection',(socket)=>{
 
 })
 
-
+http.listen(3000);
 
 
 
