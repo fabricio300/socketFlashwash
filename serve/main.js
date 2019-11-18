@@ -11,8 +11,7 @@ io.on('connection',(socket)=>{
     
 
     socket.on('message',(data)=>{
-        console.log("mensaje",data);
-
+        console.log("mensaje",data)
         //io.sockets.emit('mensajeServidor',data)
         socket.broadcast.emit('mensajeServidor',data)
     })
@@ -25,6 +24,32 @@ io.on('connection',(socket)=>{
     })
 
 
+    socket.on('asignarReaptidor',(data)=>{
+        socket.broadcast.emit('repartidor_nuevo_pedido'+data,data)
+
+    })
+
+
+    socket.on('resgirtro_de_lavanderia',(data)=>{
+        socket.broadcast.emit('nueva_lavanderia',data)
+    })
+
+
+    socket.on('rechaso_de_pedido',(data)=>{
+        socket.broadcast.emit('lavanderia_rechada'+data,data)
+    })
+
+    socket.on('lavanderia_actualizada',(data)=>{
+        socket.broadcast.emit('se_actulizo_una_lavanderia'+data,data)
+    })
+
+    socket.on('cliente_actualizado',(data)=>{
+        socket.broadcast.emit('se_actulizo_el_cliente'+data,data)
+    })
+
+    socket.on('nuevo_status',(data)=>{
+        socket.emit('se_actualiso_el_pedido'+data,data)
+    })
 })
 
 http.listen(3000);
