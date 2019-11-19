@@ -48,7 +48,7 @@ io.on('connection',(socket)=>{
     })
 
     socket.on('nuevo_status',(data)=>{
-        socket.emit('se_actualiso_el_pedido'+data,data)
+        socket.broadcast.emit('se_actualiso_el_pedido'+data,data)
     })
 })
 
