@@ -50,6 +50,13 @@ io.on('connection',(socket)=>{
     socket.on('nuevo_status',(data)=>{
         socket.broadcast.emit('se_actualiso_el_pedido'+data,data)
     })
+
+
+    socket.on('enviar_coordenadas',(data)=>{
+        socket.broadcast.emit('user_coordenadas_pedido'+data,data)
+    })
+
+
 })
 
 http.listen(3000);
